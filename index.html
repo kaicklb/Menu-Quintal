@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quintal dos Amigos Lounge & Bar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://scontent-gru2-2.xx.fbcdn.net/v/t39.30808-6/241176513_228420259106563_7087522326019456985_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=VYZTIU5JBmwQ7kNvwEQ_xCK&_nc_oc=AdnU3iqL7JhWTL70yk9a45mF345jmu2d9g8Zoc1TGgR63wDvUykd2jN8j7pV6pwLMQ8&_nc_zt=23&_nc_ht=scontent-gru2-2.xx&_nc_gid=zuMPRPpgmLBfW5Kk55yfyQ&oh=00_AfEUYuV2ijw9ZMfN7CwclcpR3RHNQkc1x0lmllPlM74tnQ&oe=68180DD9');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .menu-item:hover .menu-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .menu-overlay {
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .gallery-item {
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .btn-primary {
+            background-color: #f59e0b;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #d97706;
+            transform: translateY(-2px);
+        }
+        
+        .section-divider {
+            width: 100px;
+            height: 3px;
+            background-color: #f59e0b;
+            margin: 20px auto;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .menu-iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="fixed w-full z-50 bg-black bg-opacity-90 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnKwsC-eUn6MysPdA4QKuOPG96z9pWKxkHzQ&s" alt="Quintal dos Amigos Logo" class="h-12 rounded-full">
+                    <a href="#" class="ml-3 text-2xl font-bold text-amber-400">Quintal dos Amigos</a>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-white hover:text-amber-400 transition">Home</a>
+                    <a href="#about" class="text-white hover:text-amber-400 transition">Sobre</a>
+                    <a href="#menu" class="text-white hover:text-amber-400 transition">Menu</a>
+                    <a href="#gallery" class="text-white hover:text-amber-400 transition">Galeria</a>
+                    <a href="#contact" class="text-white hover:text-amber-400 transition">Contato</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="https://www.instagram.com/quintaldosamigos/" target="_blank" class="text-white hover:text-amber-400 transition">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="https://www.facebook.com/quintaldosamigosloungebar/" target="_blank" class="text-white hover:text-amber-400 transition">
+                        <i class="fab fa-facebook text-xl"></i>
+                    </a>
+                    <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="#home" class="text-white hover:text-amber-400 transition">Home</a>
+                    <a href="#about" class="text-white hover:text-amber-400 transition">Sobre</a>
+                    <a href="#menu" class="text-white hover:text-amber-400 transition">Menu</a>
+                    <a href="#gallery" class="text-white hover:text-amber-400 transition">Galeria</a>
+                    <a href="#contact" class="text-white hover:text-amber-400 transition">Contato</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero min-h-screen flex items-center justify-center pt-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">Quintal dos Amigos</h1>
+            <h2 class="text-2xl md:text-3xl font-semibold mb-8 text-amber-400">Lounge & Bar</h2>
+            <div class="section-divider"></div>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto mb-10 text-gray-300">
+                O lugar perfeito para reunir os amigos, descontrair e aproveitar os melhores drinks e petiscos da Freguesia do Ó.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#menu" class="btn-primary px-8 py-3 rounded-full font-semibold text-white">Ver Menu</a>
+                <a href="https://api.whatsapp.com/message/L6RL4CN4MHMVI1?autoload=1&app_absent=0" target="_blank" class="border border-amber-400 px-8 py-3 rounded-full font-semibold text-white hover:bg-amber-400 hover:bg-opacity-20 transition">
+                    <i class="fab fa-whatsapp mr-2"></i> Reservar pelo WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-slate-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Sobre Nós</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <img src="https://scontent-gru2-2.xx.fbcdn.net/v/t39.30808-6/241176513_228420259106563_7087522326019456985_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=VYZTIU5JBmwQ7kNvwEQ_xCK&_nc_oc=AdnU3iqL7JhWTL70yk9a45mF345jmu2d9g8Zoc1TGgR63wDvUykd2jN8j7pV6pwLMQ8&_nc_zt=23&_nc_ht=scontent-gru2-2.xx&_nc_gid=zuMPRPpgmLBfW5Kk55yfyQ&oh=00_AfEUYuV2ijw9ZMfN7CwclcpR3RHNQkc1x0lmllPlM74tnQ&oe=68180DD9" 
+                         alt="Quintal dos Amigos" 
+                         class="rounded-lg shadow-xl w-full h-auto max-h-96 object-cover">
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-4 text-amber-400">Nossa História</h3>
+                    <p class="text-gray-300 mb-6">
+                        O Quintal dos Amigos nasceu da paixão por criar um espaço acolhedor onde as pessoas pudessem se reunir, relaxar e desfrutar de bons momentos. Desde 2021, temos o prazer receber pessoas de todas as idades em nosso ambiente descontraído e aconchegante na Freguesia do Ó.
+                    </p>
+                    
+                    <h3 class="text-2xl font-semibold mb-4 text-amber-400">Nossa Filosofia</h3>
+                    <p class="text-gray-300 mb-6">
+                        Acreditamos que um bom bar vai além de drinks e petiscos - é sobre criar memórias. Nossa equipe está comprometida em oferecer uma experiência completa, com atendimento caloroso, músicas selecionadas e um cardápio que agrada todos os paladares.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mt-8">
+                        <div class="flex items-center">
+                            <div class="bg-amber-400 p-3 rounded-full mr-4">
+                                <i class="fas fa-cocktail text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">+50 Bebidas</h4>
+                                <p class="text-sm text-gray-400">Receitas exclusivas</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="bg-amber-400 p-3 rounded-full mr-4">
+                                <i class="fas fa-music text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Música Ao Vivo</h4>
+                                <p class="text-sm text-gray-400">Praticamente todos os dias!</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="bg-amber-400 p-3 rounded-full mr-4">
+                                <i class="fas fa-utensils text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Petiscos</h4>
+                                <p class="text-sm text-gray-400">Porções deliciosas</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="bg-amber-400 p-3 rounded-full mr-4">
+                                <i class="fas fa-users text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Ambiente</h4>
+                                <p class="text-sm text-gray-400">Aconchegante e descontraído</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Nosso Menu Digital</h2>
+                <div class="section-divider"></div>
+                <p class="text-gray-300 max-w-2xl mx-auto mt-6">
+                    Explore nossa seleção completa de drinks especiais e petiscos preparados com ingredientes frescos e muita criatividade.
+                </p>
+            </div>
+            
+            <div class="bg-gray-900 rounded-lg p-4">
+                <iframe src="https://drive.google.com/file/d/1VET_ophZrYtWptsJ4dXdvEogvCdfScMu/preview" class="menu-iframe"></iframe>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://api.whatsapp.com/message/L6RL4CN4MHMVI1?autoload=1&app_absent=0" target="_blank" class="inline-flex items-center btn-primary px-8 py-3 rounded-full font-semibold text-white">
+                    <i class="fab fa-whatsapp mr-2"></i> Faça sua reserva agora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-slate-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Nossa Galeria</h2>
+                <div class="section-divider"></div>
+                <p class="text-gray-300 max-w-2xl mx-auto mt-6">
+                    Um pouco do nosso ambiente e dos momentos especiais que criamos juntos.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://media-hosting.imagekit.io/75fb26075a884a46/Ei%20j%C3%A1%20conhece%20o%20nosso%20novo%20Quintal,%20o%20bar%20mais%20amado%20de%20S%C3%A3o%20Paulo%20A%20nova%20casa%20oferece%20um%20lugar%20ideal%20para%20aquele%20happy%20hour,%20ou%20para%20aquela%20curti%C3%A7%C3%A3o%20com%20os%20amigos,%20o%20novo%20espa%C3%A7o%20tamb%C3%A9m%20tem%20aquele%20lugar%20reservado%20para%20trazer%20sua%20fam%20(3).jpg?Expires=1840640586&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=0SI9RTWDff1-DCvRRPVUYVFkqYjHtgLWuexMMcznXTlvgmy3ns0rPDlxiq8hk2KPTByp811NmFVUSmShc0IwILY8GBe1RUzDVdXtAm8DcxqvPpD1VuQN9pMi3K0KfOg7MzF9aeKmOqf3bN-Z7XROg0IdYznm5ZXDiTGUDTNqR46bYW6Mij3icAhi9pgD0zSX1pSlCun5j3joc-6OFCBV7jOLvR4OLLn3rSf5rzanVPOW1g~hmYjPOwjVj2hIlOEz0snzoTZKIB6RmKKXyr5Vam31vYiTeP7vbuVUUxMsxtV~crtxN~7KJertApOfet4p-gIhrAh-j-xU9j3HG~T2dg__" 
+                         alt="Quintal dos Amigos" 
+                         class="w-full h-48 md:h-64 object-cover">
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://media-hosting.imagekit.io/c15ff2164e834f8c/Ei%20j%C3%A1%20conhece%20o%20nosso%20novo%20Quintal,%20o%20bar%20mais%20amado%20de%20S%C3%A3o%20Paulo%20A%20nova%20casa%20oferece%20um%20lugar%20ideal%20para%20aquele%20happy%20hour,%20ou%20para%20aquela%20curti%C3%A7%C3%A3o%20com%20os%20amigos,%20o%20novo%20espa%C3%A7o%20tamb%C3%A9m%20tem%20aquele%20lugar%20reservado%20para%20trazer%20sua%20fam%20(2).jpg?Expires=1840640572&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=jq6hkjAEeh67NZoDjf9nyL7yIJQzCASmFb7yjxi5lxtkeGPmNaQu4Dcc1x4D2HVm7biaeNCT27abc7MSDxkASbrpsZ5kED71hpq0wmJ1U8WBhOQIxeGmpKqzsGGGGTdBjiXItqgosKC8kkl8fYVb9XYEilaAHmvROcIpDZgKDkUlOQGiSCIhevVLUIlAolX-S2JC0n6CPuB7S8n7eWp4y5spRi67gu0SV3i5z5iCF6GcsYWR4K07-cyp4YRkWQFf0IfNf5xFJSATQ1zSku3qSbMgVqJuiw8x0NgbytZsr39MeBgOh6nCJ9j9-mIZPkc8tjveOICUNGT3D2w2vUJxCw__" 
+                         alt="Happy Hour" 
+                         class="w-full h-48 md:h-64 object-cover">
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://media-hosting.imagekit.io/87d754ffaa5f40ee/Ei%20j%C3%A1%20conhece%20o%20nosso%20novo%20Quintal,%20o%20bar%20mais%20amado%20de%20S%C3%A3o%20Paulo%20A%20nova%20casa%20oferece%20um%20lugar%20ideal%20para%20aquele%20happy%20hour,%20ou%20para%20aquela%20curti%C3%A7%C3%A3o%20com%20os%20amigos,%20o%20novo%20espa%C3%A7o%20tamb%C3%A9m%20tem%20aquele%20lugar%20reservado%20para%20trazer%20sua%20fam%20(1).jpg?Expires=1840640560&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=bnWghlOoYmgyP~mBSKFNLhbCLr9fgkotwD3jotKXelErYBh1QgcTz9PCTF54qiAUIpNyNzu-Dh8k0U2i-pczk-3vGnPgp23hm~TySg9lQKQhHGuf03bmReEP-cXf3OUBPyWVQ2scQEAtky-7JfcWO-jffZfzjZfMokafwgE9NbILRY0iVrIk8ysYfQgEH8EhSrSC6kPWS6gHnm089aKr7erddcgNBiwjGv9l1crDfQe0IOjShIZICn7je~tnBoDd7WeEq~0HGnK2iMmOrmgHcnpe1fTOrf2yvKKDkINqS9yuLe59gHEwQXNPAZmaA0tPFKdhetCVN0KXZoLJGatlzg__" 
+                         alt="Tábua de Frios" 
+                         class="w-full h-48 md:h-64 object-cover">
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://media-hosting.imagekit.io/7e1cad77907b4333/Ei%20j%C3%A1%20conhece%20o%20nosso%20novo%20Quintal,%20o%20bar%20mais%20amado%20de%20S%C3%A3o%20Paulo%20A%20nova%20casa%20oferece%20um%20lugar%20ideal%20para%20aquele%20happy%20hour,%20ou%20para%20aquela%20curti%C3%A7%C3%A3o%20com%20os%20amigos,%20o%20novo%20espa%C3%A7o%20tamb%C3%A9m%20tem%20aquele%20lugar%20reservado%20para%20trazer%20sua%20fam%C3%ADlia.jpg?Expires=1840640381&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=mTiZJf8lFKzbTdZUPloMRSX8GlZIcXNSITxDxk6f5S32yfwmOhgZgTh5d1NoT259OLXsnXfAfy3W27ajGKVOzRFXU1LWgVtU~5GMyfSxg53Pn5FmWwfWFJszQVyoLNPqtTKN4J-qsh9v-eFJdkb4-ybBLHi0aaWDWezt-U~RDn1K5wgv27n~4r8NbleIsjqJw~5mRK4lnlFWef9AahkxoVdcbcRwMx9wsV46LLIpc1PJuUzgq9dGkOq48wbwkJVvISxicEYY5wfveDr~xHaLB9hq903UMR2LhsgHtHHCtgseheVMDBLmbkN1xBwnuxlyBQwMKHraex1~60kH9NBmNg__" 
+                         alt="Batata Frita" 
+                         class="w-full h-48 md:h-64 object-cover">
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://media-hosting.imagekit.io/f284ddf5af1a4c01/Se%20tem%20uma%20coisa%20que%20combina%20com%20o%20Quintal%20dos%20Amigos,%20%C3%A9%20uma%20t%C3%A1bua%20de%20respeito!Churrasco,%20frios%20e%20aquele%20clima%20perfeito%20para%20um%20happy%20hour%20ou%20um%20encontro%20com%20a%20galera.%20Porque%20aqui,%20cada%20peda%C3%A7o%20%C3%A9%20um%20convite%20para%20curtir,%20brindar%20e%20aprove.jpg?Expires=1840639904&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=FrITXYYO9-otxkvcFf8N3t3TVma21KL1C8RZP6hWd-kbGr9P5yW6~mdo3mQGA1dErvGLJL3QOGeHOeqt0U5r8iCQt~5Lq3VwYpbtVH0GS~I4Yj0P7t0mpsiz7k8uPAy-1T4rc-~duMDz0GC8Jg8xr5eagxFMDDvP7c9Qk9L5OOa-8mNvqG8IpRu3TvM6y2lF8WoE1AlUJSqI23TVhSr0iotcv85qJzFbTNRgl53Y2gc41LlFO1aRdIbVZoAC4i~CFnbxoWFp3VQEGmTwtEUbS-7MSdsJSoHEf4wcFMIH9FbiQ34GLV9ruRLHrkrIufOAJcswt8jqY8vJ-CEd6pQXJA__" 
+                         alt="Ambiente Noturno" 
+                         class="w-full h-48 md:h-64 object-cover">
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://media-hosting.imagekit.io/06a51c9ee960409d/Se%20tem%20uma%20coisa%20que%20combina%20com%20o%20Quintal%20dos%20Amigos,%20%C3%A9%20uma%20t%C3%A1bua%20de%20respeito!Churrasco,%20frios%20e%20aquele%20clima%20perfeito%20para%20um%20happy%20hour%20ou%20um%20encontro%20com%20a%20galera.%20Porque%20aqui,%20cada%20peda%C3%A7o%20%C3%A9%20um%20convite%20para%20curtir,%20brindar%20e%20ap%20(1).jpg?Expires=1840639903&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=frxPdPjPF1Bp028DbwBFMzp670FkIdYO6NE4BHOj48O93k~RqQ2wqlSUulP86f4v6vMb016VVM3SMpNepv2JX7jbsB-CalYbLRGp~ektrtcWZa8NqAAJIW1OClfuwPmIgPRKiEprqO79MTTd6~4XYueLvLdVjDYO4EzzUcxlvUQ~kHLqppHDU9BiWRYQp0K6oZIuJX9vlWXE3h1SXPPS9T8UqWanddEHiZAJSHUBXUqvfdPeTqlUcHEJqsBwma9HmP7mngX70F3rQj53I8K69fiJZosYn~XGAY~CxNS0HLvUm8zHHWq622gzWgEJTf~41DcJW0lhReHR9B2WxoS~Mg__" 
+                         alt="Música ao Vivo" 
+                         class="w-full h-48 md:h-64 object-cover">
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://media-hosting.imagekit.io/3fe6958eb2964952/Uma%20pitada%20do%20que%20foi%20a%20PRIMEIRA%20EDI%C3%87%C3%83O%20do%20Quintal%20do%20@fabinhosoueu%20uma%20noite%20simplesmente%20sensacional,%20com%20uma%20energia%20l%C3%A1%20em%20cima%20e%20uma%20experi%C3%AAncia%20incr%C3%ADvel!%20Agradecemos%20a%20todos%20que%20fizeram%20parte%20dessa%20hist%C3%B3ria.%20Fabinho,%20como%20sempre,%20.jpg?Expires=1840639901&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=cFytw5LM29s7H7pA7ZQ0AoKLWh1HAvrAxK2eSUMhXXLDvzPh0Ck9kxet8cKRowOLGTDsUHNw40xmOjMcLLu7psHrCFlvkKelAbCJ761LKCv~bfaPvqazOD2Sdt0nMdkBuKQK6jun56T29fOuvpoDJ8o0ppekF8nF~qswm84fl~gIvqpcPulPNc~~0XdW5mmX8zpUd8G1BGCf~9qm9wuRkypHxit7qohfPTkpCsH8xm2q-mSd84HiJzv18sYwjU0Z5cMn3MEQv-B-e7hoM4jYpqPLPoafJPZdb2VRJkQvM1a33NcfDZKj~JOtM3oXUHd8e1DFd1qmDIAu0GZQd6AgnQ__" 
+                         alt="Happy Hour" 
+                         class="w-full h-48 md:h-64 object-cover">
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://media-hosting.imagekit.io/abff68f0e31d41a4/Uma%20pitada%20do%20que%20foi%20a%20PRIMEIRA%20EDI%C3%87%C3%83O%20do%20Quintal%20do%20@fabinhosoueu%20uma%20noite%20simplesmente%20sensacional,%20com%20uma%20energia%20l%C3%A1%20em%20cima%20e%20uma%20experi%C3%AAncia%20incr%C3%ADvel!%20Agradecemos%20a%20todos%20que%20fizeram%20parte%20dessa%20hist%C3%B3ria.%20Fabinho,%20como%20semp%20(1).jpg?Expires=1840639863&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=TiUiQK06gzGi0U4JCvVmQFcNp2-JPonemqfsQ-Fp9yy5FKwSnyPI-xvq6w~-2pDxVJOE9u8hKb35a3DAUFxVHvFkFWw3PKi-BTxDBo3dyVTAFKu7gSfB72IRtUOOACPdx1vPNQ08M3fT1iQJQWb28AWHzChMBA~iJGvdR6rNAinA9NnOUB7Ozi3LuzWDFIvUb1b-SJE5AXeQzbnnRbAyPnev0Ht2F1MpQRLg8UOWZEfXZ53HvWRgR04Wi2WblHELQZEN6Fr4aTcTblR2Jbnhp3A1HKNLWyUnS3VNalXzBPEb9H-44Nx1y88nCMrtR6SPLiZzymd2EcvxK0r6-4abwQ__" 
+                         alt="Noite do Sertanejo" 
+                         class="w-full h-48 md:h-64 object-cover">
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://www.instagram.com/quintaldosamigos/" target="_blank" class="inline-flex items-center btn-primary px-8 py-3 rounded-full font-semibold text-white">
+                    <i class="fab fa-instagram mr-2"></i> Siga-nos no Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-slate-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">O Que Dizem Nossos Clientes</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Glaudenia Lucia" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-white">Glaudenia Lucia</h4>
+                            <div class="flex text-amber-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        "Lugar agradável e atendentes divertidos e atenciosos. Voltarei mais vezes."
+                    </p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Nicóly Donata" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-white">Nicóly Donata</h4>
+                            <div class="flex text-amber-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        "Amei o espaço! Tem várias bandas legais e o pessoal é super animado."
+                    </p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Leonardo" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-white">Leonardo</h4>
+                            <div class="flex text-amber-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        "Fui com a minha família no sábado, pagode do bom e uma ótima feijoada."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white">Entre em Contato</h2>
+                <div class="section-divider"></div>
+                <p class="text-gray-300 max-w-2xl mx-auto mt-6">
+                    Faça sua reserva, tire suas dúvidas ou envie sugestões. Estamos ansiosos para te receber!
+                </p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-900 rounded-lg p-8 h-full">
+                        <h3 class="text-2xl font-bold mb-6 text-amber-400">Informações de Contato</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-amber-400 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white mb-1">Endereço</h4>
+                                    <p class="text-gray-300">Av. Gen. Edgar Facó, 765 - Freguesia do Ó, São Paulo - SP, 02924-201</p>
+                                    <a href="https://www.google.com/maps/place/Quintal+dos+Amigos+Lounge+%26+Bar/@-23.4995633,-46.7069755,17z/data=!3m1!4b1!4m6!3m5!1s0x94cef9c307a32423:0xb36fbc5b26ebea55!8m2!3d-23.4995633!4d-46.7069755!16s%2Fg%2F11ngtmmhph?entry=ttu&g_ep=EgoyMDI1MDQyOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="text-amber-400 hover:underline mt-1 inline-block">Ver no Google Maps</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-amber-400 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white mb-1">Telefone</h4>
+                                    <p class="text-gray-300">11 95140-6363</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-amber-400 p-3 rounded-full mr-4">
+                                    <i class="fas fa-clock text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-white mb-1">Horário de Funcionamento</h4>
+                                    <p class="text-gray-300">SEGUNDA A QUINTA: 11H ÀS 02H</p>
+                                    <p class="text-gray-300">SEXTA-FEIRA: 11H ÀS 03H</p>
+                                    <p class="text-gray-300">SÁBADO: 11H ÀS 03H</p>
+                                     <p class="text-gray-300">DOMINGO: 11H ÀS 01H</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-semibold text-white mb-4">Reservas pelo WhatsApp</h4>
+                            <a href="https://api.whatsapp.com/message/L6RL4CN4MHMVI1?autoload=1&app_absent=0" target="_blank" class="inline-flex items-center btn-primary px-6 py-3 rounded-full font-semibold text-white">
+                                <i class="fab fa-whatsapp mr-2"></i> Enviar Mensagem
+                            </a>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-semibold text-white mb-4">Siga-nos nas Redes Sociais</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.instagram.com/quintaldosamigos/" target="_blank" class="bg-gray-800 p-3 rounded-full text-white hover:bg-amber-400 transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://www.facebook.com/quintaldosamigosloungebar/" target="_blank" class="bg-gray-800 p-3 rounded-full text-white hover:bg-amber-400 transition">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <a href="https://api.whatsapp.com/message/L6RL4CN4MHMVI1?autoload=1&app_absent=0" target="_blank" class="bg-gray-800 p-3 rounded-full text-white hover:bg-amber-400 transition">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="h-full">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.123456789012!2d-46.7069755!3d-23.4995633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef9c307a32423%3A0xb36fbc5b26ebea55!2sQuintal%20dos%20Amigos%20Lounge%20%26%20Bar!5e0!3m2!1spt-BR!2sbr!4v1625063228679!5m2!1spt-BR!2sbr" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy"
+                            class="rounded-lg shadow-xl h-full min-h-[400px]">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-6 md:mb-0">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnKwsC-eUn6MysPdA4QKuOPG96z9pWKxkHzQ&s" alt="Quintal dos Amigos Logo" class="h-12 rounded-full">
+                    <div class="ml-4">
+                        <h3 class="text-xl font-bold text-white">Quintal dos Amigos</h3>
+                        <p class="text-gray-400">Lounge & Bar - Freguesia do Ó</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col items-center md:items-end">
+                    <p class="text-gray-400 mb-4 text-center md:text-right">
+                        © 2021 Quintal dos Amigos. Todos os direitos reservados.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/quintaldosamigos/" target="_blank" class="text-gray-400 hover:text-amber-400 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/quintaldosamigosloungebar/" target="_blank" class="text-gray-400 hover:text-amber-400 transition">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://api.whatsapp.com/message/L6RL4CN4MHMVI1?autoload=1&app_absent=0" target="_blank" class="text-gray-400 hover:text-amber-400 transition">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-amber-400 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.querySelector('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
